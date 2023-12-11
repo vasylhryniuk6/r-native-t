@@ -14,7 +14,7 @@ export const GalleryScreen = () => {
     <Lightbox style={{flex: 1, margin: 8}}>
       <Image
         source={{uri: item.cover_photo.urls.regular}}
-        style={{width: '100%', height: 150, borderRadius: 8}}
+        style={{width: '100%', height: 150, borderRadius: 9}}
       />
     </Lightbox>
   );

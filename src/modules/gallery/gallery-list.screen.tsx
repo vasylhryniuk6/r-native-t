@@ -14,14 +14,20 @@ export const GalleryListScreen = () => {
       //this error fixed by adding a propsWithChildren to the core node_modules packege react-native-lightbox-v2
       <Lightbox
         style={styles.container}
-        renderContent={() => (
+        renderContent={() => {
+          return (
+            <Image
+              source={{uri: item.cover_photo.urls.regular}}
+              style={styles.imageBox}
+            />
+          );
+        }}>
+        <View>
           <Image
             source={{uri: item.cover_photo.urls.regular}}
             style={styles.image}
           />
-        )}>
-        <View>
-          <Text>{item.title}</Text>
+          <Text>{`${item.user.first_name} ${item.user.last_name}`}</Text>
         </View>
       </Lightbox>
     );
@@ -48,7 +54,13 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 150,
+    height: 100,
+    borderRadius: 9,
+    marginBottom: 5,
+  },
+  imageBox: {
+    width: '100%',
+    height: 300,
     borderRadius: 9,
   },
 });

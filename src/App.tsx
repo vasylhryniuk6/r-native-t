@@ -1,11 +1,9 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {GalleryScreen} from './modules/gallery';
+import {GalleryScreen, GalleryListScreen} from './modules/gallery';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider} from 'react-redux';
 import {store} from './store/store';
-
-import {GalleryListScreen} from './modules/gallery/gallery-list.screen';
 
 const Tab = createBottomTabNavigator();
 

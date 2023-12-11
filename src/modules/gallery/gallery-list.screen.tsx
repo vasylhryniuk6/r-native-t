@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {FlatList, Image, Text, View} from 'react-native';
+import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
 import {useGetGalleryPhotosQuery} from './gallery.service';
 import Lightbox from 'react-native-lightbox-v2';
 import {GalleryRoot} from '../../types';
@@ -11,12 +11,13 @@ export const GalleryListScreen = () => {
 
   const renderItem = ({item}: {item: GalleryRoot}) => {
     return (
+      //this error fixed by adding a propsWithChildren to the core node_modules packege react-native-lightbox-v2
       <Lightbox
-        style={{flex: 1, margin: 8}}
+        style={styles.container}
         renderContent={() => (
           <Image
             source={{uri: item.cover_photo.urls.regular}}
-            style={{width: '100%', height: 150, borderRadius: 9}}
+            style={styles.image}
           />
         )}>
         <View>
@@ -38,3 +39,16 @@ export const GalleryListScreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    margin: 9,
+  },
+  image: {
+    width: '100%',
+    height: 150,
+    borderRadius: 9,
+  },
+});

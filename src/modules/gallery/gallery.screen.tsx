@@ -1,4 +1,4 @@
-import {FlatList, Image} from 'react-native';
+import {FlatList, Image, StyleSheet} from 'react-native';
 
 import React, {useState} from 'react';
 
@@ -11,10 +11,11 @@ export const GalleryScreen = () => {
   const {data} = useGetGalleryPhotosQuery(page);
 
   const renderItem = ({item}: {item: GalleryRoot}) => (
-    <Lightbox style={{flex: 1, margin: 8}}>
+    //this error fixed by adding a propsWithChildren to the core node_modules packege react-native-lightbox-v2
+    <Lightbox style={styles.container}>
       <Image
         source={{uri: item.cover_photo.urls.regular}}
-        style={{width: '100%', height: 150, borderRadius: 9}}
+        style={styles.image}
       />
     </Lightbox>
   );
@@ -29,3 +30,16 @@ export const GalleryScreen = () => {
     />
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    margin: 9,
+  },
+  image: {
+    width: '100%',
+    height: 150,
+    borderRadius: 9,
+  },
+});
